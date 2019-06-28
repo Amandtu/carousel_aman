@@ -81,7 +81,6 @@ body {
 .container .pagination .dots:first-child {
   margin-left: 0;
 }
-.container .pagination .dots:hover,
 .container .pagination .dots.active {
   background-color: white;
 }
