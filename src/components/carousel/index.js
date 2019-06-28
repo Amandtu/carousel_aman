@@ -89,6 +89,9 @@ class Carousel extends Component {
                 image={img.urls[imgSize]}
                 caption={this.props.titles[index]}
                 {...this.state}
+                setAutoplay={this.setAutoplay}
+                moveImage={this.moveImage}
+                timer={timer}
               />
             );
           })}
