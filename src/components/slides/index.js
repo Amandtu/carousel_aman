@@ -9,7 +9,7 @@ const Slide = props => {
         props.index === currSlide ? slideClass.current : ""
       } ${props.index === nextSlide ? slideClass.next : ""}`}
       style={{ opacity: `${props.index === currIndex ? "1" : "0"}` }}
-      onTouchStart={() => {
+      onTouchMove={() => {
         clearInterval(props.timer);
         props.setAutoplay();
         props.moveImage(currIndex + 1);
