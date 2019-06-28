@@ -10,7 +10,7 @@ const Slide = props => {
       } ${props.index === nextSlide ? slideClass.next : ""}`}
       style={{ opacity: `${props.index === currIndex ? "1" : "0"}` }}
       onTouchEnd={() => {
-        clearInterval(props.timer);
+        clearTimeout(props.timer);
         props.setAutoplay();
         props.moveImage(currIndex + 1);
       }}
