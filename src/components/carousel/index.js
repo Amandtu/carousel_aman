@@ -29,10 +29,6 @@ class Carousel extends Component {
         this.setState(
           { imgUrls: data.slice(0, this.props.no_of_slides), imgSize: req },
           () => {
-            let slides = document.getElementsByClassName("imgContainer");
-            slides[0].style.opacity = 1;
-            let dots = document.getElementsByClassName("dots");
-            dots[0].classList.add("active");
             this.setAutoplay();
           }
         );
@@ -52,40 +48,31 @@ class Carousel extends Component {
   };
 
   moveImage = index => {
-    let { currIndex } = this.state;
-    let slides = document.getElementsByClassName("imgContainer");
-    let dots = document.getElementsByClassName("dots");
-    let current, next;
+    let { currIndex, imgUrls } = this.state;
     let slideClass = {
       current: "",
       next: ""
     };
     if (index > currIndex) {
-      if (index >= slides.length) {
+      if (index >= imgUrls.length) {
         index = 0;
       }
       slideClass.current = "moveCurrentLeft";
       slideClass.next = "moveNextLeft";
     } else if (index < currIndex) {
       if (index < 0) {
-        index = slides.length - 1;
+        index = imgUrls.length - 1;
       }
       slideClass.current = "moveCurrentRight";
       slideClass.next = "moveNextRight";
     }
     if (index !== currIndex) {
-      current = slides[currIndex];
-      next = slides[index];
-      for (let i = 0; i < slides.length; i++) {
-        slides[i].className = "imgContainer";
-        slides[i].style.opacity = 0;
-        dots[i].classList.remove("active");
-      }
-      current.classList.add(slideClass.current);
-      next.classList.add(slideClass.next);
-      next.style.opacity = 1;
-      dots[index].classList.add("active");
-      this.setState({ currIndex: index });
+      this.setState({
+        currIndex: index,
+        currSlide: currIndex,
+        nextSlide: index,
+        slideClass: slideClass
+      });
     }
   };
 
@@ -98,8 +85,10 @@ class Carousel extends Component {
             return (
               <Slide
                 key={index}
+                index={index}
                 image={img.urls[imgSize]}
                 caption={this.props.titles[index]}
+                {...this.state}
               />
             );
           })}
@@ -129,7 +118,7 @@ class Carousel extends Component {
             return (
               <span
                 key={index}
-                className="dots"
+                className={`dots ${currIndex === index ? "active" : ""}`}
                 onClick={() => {
                   clearTimeout(timer);
                   this.setAutoplay();
