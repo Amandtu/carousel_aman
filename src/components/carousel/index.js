@@ -22,12 +22,10 @@ class Carousel extends Component {
     } else if (w >= 768) {
       req = "regular";
     }
-    console.log(w, req);
     let url = `https://api.unsplash.com/photos/?client_id=2e071958e3ead1490d476d8df27d16853eebbb6d223efcf25d7b899cec80a836`;
     fetch(url)
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         this.setState(
           { imgUrls: data.slice(0, this.props.no_of_slides), imgSize: req },
           () => {
@@ -62,7 +60,6 @@ class Carousel extends Component {
       current: "",
       next: ""
     };
-    console.log(index, currIndex);
     if (index > currIndex) {
       if (index >= slides.length) {
         index = 0;
