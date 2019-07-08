@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/carousel_aman/static/css/main.3218f86a.chunk.css",
+    "main.css": "/carousel_aman/static/css/main.63fc55da.chunk.css",
     "main.js": "/carousel_aman/static/js/main.3b1829e3.chunk.js",
     "main.js.map": "/carousel_aman/static/js/main.3b1829e3.chunk.js.map",
     "runtime~main.js": "/carousel_aman/static/js/runtime~main.d52ab4af.js",
@@ -8,8 +8,8 @@
     "static/js/2.4e81ba5b.chunk.js": "/carousel_aman/static/js/2.4e81ba5b.chunk.js",
     "static/js/2.4e81ba5b.chunk.js.map": "/carousel_aman/static/js/2.4e81ba5b.chunk.js.map",
     "index.html": "/carousel_aman/index.html",
-    "precache-manifest.16f49bbacf49d6544faf54d667ff12d1.js": "/carousel_aman/precache-manifest.16f49bbacf49d6544faf54d667ff12d1.js",
+    "precache-manifest.049f7c1073f594019ebbc10c08ef38d3.js": "/carousel_aman/precache-manifest.049f7c1073f594019ebbc10c08ef38d3.js",
     "service-worker.js": "/carousel_aman/service-worker.js",
-    "static/css/main.3218f86a.chunk.css.map": "/carousel_aman/static/css/main.3218f86a.chunk.css.map"
+    "static/css/main.63fc55da.chunk.css.map": "/carousel_aman/static/css/main.63fc55da.chunk.css.map"
   }
 }

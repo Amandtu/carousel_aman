@@ -2,16 +2,6 @@ import React, { Component } from "react";
 import "./cssfile.css";
 import Slide from "../slides";
 
-/*
-"https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg",
-      "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/canyon.jpg",
-      "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/city.jpg",
-      "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/desert.jpg",
-      "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/mountains.jpg",
-      "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/redsky.jpg",
-      "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/sandy-shores.jpg",
-      "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/tree-of-life.jpg"
-*/
 var timer;
 class Carousel extends Component {
   componentDidMount() {
@@ -22,17 +12,33 @@ class Carousel extends Component {
     } else if (w >= 768) {
       req = "regular";
     }
-    let url = `https://api.unsplash.com/photos/?client_id=2e071958e3ead1490d476d8df27d16853eebbb6d223efcf25d7b899cec80a836`;
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        this.setState(
-          { imgUrls: data.slice(0, this.props.no_of_slides), imgSize: req },
-          () => {
-            this.setAutoplay();
-          }
-        );
-      });
+    // let url = `https://api.unsplash.com/photos/?client_id=2e071958e3ead1490d476d8df27d16853eebbb6d223efcf25d7b899cec80a836`;
+    // fetch(url)
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     this.setState(
+    //       { imgUrls: data.slice(0, this.props.no_of_slides), imgSize: req },
+    //       () => {
+    //         this.setAutoplay();
+    //       }
+    //     );
+    //   });
+    let data = [
+      "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg",
+      "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/canyon.jpg",
+      "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/city.jpg",
+      "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/desert.jpg",
+      "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/mountains.jpg",
+      "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/redsky.jpg",
+      "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/sandy-shores.jpg",
+      "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/tree-of-life.jpg"
+    ];
+    this.setState(
+      { imgUrls: data.slice(0, this.props.no_of_slides), imgSize: req },
+      () => {
+        this.setAutoplay();
+      }
+    );
   }
   state = {
     imgUrls: [],
@@ -77,7 +83,7 @@ class Carousel extends Component {
   };
 
   render() {
-    let { imgUrls, currIndex, imgSize } = this.state;
+    let { imgUrls, currIndex } = this.state;
     return (
       <div className="container">
         <div className="carousel">
@@ -86,7 +92,7 @@ class Carousel extends Component {
               <Slide
                 key={index}
                 index={index}
-                image={img.urls[imgSize]}
+                image={img}
                 caption={this.props.titles[index]}
                 {...this.state}
                 setAutoplay={this.setAutoplay}
